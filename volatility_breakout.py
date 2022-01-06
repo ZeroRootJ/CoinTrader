@@ -9,7 +9,7 @@
 # 
 # 매도 기준 : 당일 종가에 매도
 
-# In[24]:
+# In[1]:
 
 
 from pyupbit import *
@@ -17,7 +17,7 @@ import time
 import datetime
 
 
-# In[25]:
+# In[2]:
 
 
 def buy_crypto(ticker):
@@ -27,7 +27,7 @@ def sell_crypto(ticker):
     pass
 
 
-# In[26]:
+# In[3]:
 
 
 def get_target_price(ticker,k):
@@ -37,7 +37,7 @@ def get_target_price(ticker,k):
     return target
 
 
-# In[29]:
+# In[4]:
 
 
 ticker = "KRW-BTC"
@@ -45,6 +45,9 @@ now = datetime.datetime.now()
 m_open = datetime.datetime(now.year,now.month,now.day) + datetime.timedelta(1.375)
 target = get_target_price(ticker,0.5)
 print("[START] Volatility Breakout TRADER")
+
+# for logging
+loop = 0
 
 while True:
     try:
@@ -63,6 +66,10 @@ while True:
             print("[BUY] ", str(datetime.datetime.now()))
             print("PRICE: ",get_current_price(ticker)," TARGET",target)
             flag = False
+            
+        if loop%100 is 0:
+            print("[LOG] ",loop,"loops / ",str(datetime.datetime.now()))
+            loop+=1
     except:
         print('[ERR] ', str(datetime.datetime.now()))
 
