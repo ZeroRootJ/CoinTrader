@@ -67,9 +67,9 @@ while True:
             print("PRICE: ",get_current_price(ticker)," TARGET",target)
             flag = False
             
+        loop += 1
         if loop%100 is 0:
             print("[LOG] ",loop,"loops / ",str(datetime.datetime.now()))
-            loop+=1
     except:
         print('[ERR] ', str(datetime.datetime.now()))
 
